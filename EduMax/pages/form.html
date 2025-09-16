@@ -119,18 +119,19 @@
                 </div>
 				<div class="container ms-1 mt-1 me-1 mb-1 col bordered">
 					<form action="https://students.open.ac.uk/mct/tm252/reflect/reflect.php" method="post">
+						<input type="hidden" name="itemID" value="10002000-3000-123456abcdef">
 						<div class="row mt-2 mb-2 middle-aligned">
 							<div class="col-2">
 								<label for="titleInput">Title:</label>
 							</div>
 							<div class="col-6">
-								<input type="text" class="form-control form-control-sm bordered" id="titleInput">
+								<input type="text" class="form-control form-control-sm bordered" id="titleInput" name="title">
 							</div>
 							<div class="col-1">
 								<label for="typeSelect">Type:</label>							
 							</div>
 							<div class="col-2">							
-								<select class="form-select-sm bordered" id="typeSelect">
+								<select class="form-select-sm bordered" id="typeSelect" name="type">
 								  <option selected>&nbsp;</option>
 								  <option value="1">News</option>
 								  <option value="2">Event</option>
@@ -143,7 +144,7 @@
 								<label for="subtitleInput">Subtitle:</label>
 							</div>
 							<div class="col-6">
-								<input type="text" class="form-control form-control-sm bordered" id="subtitleInput">
+								<input type="text" class="form-control form-control-sm bordered" id="subtitleInput" name="subtitle">
 							</div>
 						</div>												
 						<div class="row">
@@ -154,7 +155,7 @@
 											<label for="imageInput">Image:</label>
 										</div>									
 										<div class="col-7 ms-1">
-											<input type="text" class="form-control form-control-sm bordered" id="imageInput">
+											<input type="text" class="form-control form-control-sm bordered" id="imageInput" name="imagePath">
 										</div>
 										<div class="col text-end">
 											<button type="button" class="btn btn-sm btn-primary">Open</button>
@@ -167,7 +168,7 @@
 											<label for="captionInput">Caption:</label>
 										</div>
 										<div class="col-7 ms-1">
-											<input type="text" class="form-control form-control-sm bordered" id="captionInput">
+											<input type="text" class="form-control form-control-sm bordered" id="captionInput" name="caption">
 										</div>						
 									</div>								
 								</div>
@@ -184,7 +185,7 @@
 								<label for="textInput">Text:</label>
 							</div>
 							<div class="col-6">
-								<textarea class="form-control bordered" id="textInput" rows="6"></textarea>								
+								<textarea class="form-control bordered" id="textInput" name="text" rows="6"></textarea>								
 							</div>						
 						</div>
 						<div class="row mt-2 mb-2 middle-aligned">
