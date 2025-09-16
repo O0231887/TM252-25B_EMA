@@ -10,10 +10,12 @@
     <link rel="stylesheet" href="../css/custom.css"><!-- Custom stylesheet - linked after Bootstrap so that entries here take precedence and override Bootstrap's style -->
 </head>
 <body>
+    <!-- Skip link for keyboard users -->
+    <a href="#main-content" class="visually-hidden-focusable">Skip to main content</a>
+
     <!-- Fixed-width container. This container's max-width will change at different breakpoints -->
     <div class="container">
-        <header class="header">
-            <!--header content to go here-->
+        <header class="header" role="banner">
             <!-- Row 1 -->
             <div class="row">
                 <div class="col">
@@ -26,196 +28,248 @@
                 </div>
                 <div class="col text-end">
                     <!-- logout button -->
-                    <a class="btn btn-primary m-2" href="" role="button">Sign Out</a>
+                    <a class="btn btn-primary m-2" href="" role="button" aria-label="Sign Out">Sign Out</a>
                 </div>
             </div>
             <!-- Row 2 -->
             <div class="row g-0 bg-dark">
-				<div class="col">
-					<!-- Empty -->
-				</div>
                 <div class="col">
-                    <nav class="navbar navbar-expand-lg p-2" data-bs-theme="dark">
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <!-- Empty -->
+                </div>
+                <div class="col">
+                    <nav class="navbar navbar-expand-lg p-2" data-bs-theme="dark" aria-label="Primary navigation">
+                        <button class="navbar-toggler" type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#navbarNav"
+                                aria-controls="navbarNav"
+                                aria-expanded="false"
+                                aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
                         <div class="collapse navbar-collapse" id="navbarNav">
                             <div class="navbar-nav">
-                            <!-- primary navigation -->
+                                <!-- primary navigation -->
                                 <a class="nav-link" href="../index.html">Home</a>
                                 <a class="nav-link" href="./placeholder.html">Administration</a>
                                 <a class="nav-link" href="./placeholder.html">Modules</a>
                                 <a class="nav-link" href="./placeholder.html">Events</a>
-								<a class="nav-link" href="./placeholder.html">News</a>
-								<a class="nav-link" href="./placeholder.html">Announcements</a>
+                                <a class="nav-link" href="./placeholder.html">News</a>
+                                <a class="nav-link" href="./placeholder.html">Announcements</a>
                             </div>
                         </div>
                     </nav>
                 </div>
                 <div class="col">
                     <!-- search box -->
-                    <form class="d-flex p-2" role="search">
-                        <input class="form-control me-2" type="search" placeholder="search" aria-label="search">
+                    <form class="d-flex p-2" role="search" aria-label="Site search">
+                        <label for="siteSearch" class="visually-hidden">Search site</label>
+                        <input id="siteSearch" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     </form>
                 </div>
             </div>
         </header>
+
         <!-- Row 3 -->
         <div class="row mt-2 ms-0">
             <div class="col">
-                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="Breadcrumb navigation" role="navigation">
                     <!-- breadcrumbs -->
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item active" aria-current="page">Home</li>
-						<li class="breadcrumb-item active" aria-current="page">Administration</li>
-						<li class="breadcrumb-item active" aria-current="page">Modules</li>						
-						<li class="breadcrumb-item active" aria-current="page">Create module</li>
+                        <li class="breadcrumb-item"><a href="#" aria-current="false">Home</a></li>
+                        <li class="breadcrumb-item"><a href="#" aria-current="false">Administration</a></li>
+                        <li class="breadcrumb-item"><a href="#" aria-current="false">Modules</a></li>                       
+                        <li class="breadcrumb-item active" aria-current="page">Create module</li>
                     </ol>
                 </nav>
             </div>
         </div>
-		<!-- page-specific content in sections -->
-        <main>
+
+        <!-- page-specific content in sections -->
+        <main id="main-content" role="main">
             <!-- Row 4 -->
             <div class="row mt-0 ms-0 g-0 bordered">
                 <div class="container ms-1 mt-1 me-1 mb-1 col-2 bordered">
-					<ul id="treeview" class="treeview">
-						<li>
-							<span>Administration</span>
-						</li>
-						<li>
-							<span class="caret">Modules</span>
-							<ul class="nested">
-								<li>Modules list</li>
-								<li>Create module</li>
-								<li>Edit module</li>
-							</ul>							
-						</li>
-						<li>
-							<span class="caret">Content</span>
-							<ul class="nested">
-								<li>Content list</li>
-								<li>Create content</li>
-								<li>Edit content</li>
-							</ul>								
-						</li>
-						<li>
-							<span class="caret">Members</span>
-							<ul class="nested">
-								<li>Member list</li>
-								<li>Edit member</li>
-							</ul>								
-						</li>
-						<li>
-							<span class="caret">Support</span>
-							<ul class="nested">
-								<li>Ticket list</li>
-								<li>Edit ticket</li>
-							</ul>								
-						</li>								
-						<li>Settings</li>
-					</ul>
+                    <ul id="treeview" class="treeview" role="tree" aria-label="Admin sidebar">
+                        <li role="treeitem">
+                            <span>Administration</span>
+                        </li>
+                        <li role="treeitem" aria-expanded="false">
+                            <span class="caret" role="button" tabindex="0" aria-controls="modules-group">Modules</span>
+                            <ul id="modules-group" class="nested" role="group">
+                                <li role="treeitem">Modules list</li>
+                                <li role="treeitem">Create module</li>
+                                <li role="treeitem">Edit module</li>
+                            </ul>                           
+                        </li>
+                        <li role="treeitem" aria-expanded="false">
+                            <span class="caret" role="button" tabindex="0" aria-controls="content-group">Content</span>
+                            <ul id="content-group" class="nested" role="group">
+                                <li role="treeitem">Content list</li>
+                                <li role="treeitem">Create content</li>
+                                <li role="treeitem">Edit content</li>
+                            </ul>                               
+                        </li>
+                        <li role="treeitem" aria-expanded="false">
+                            <span class="caret" role="button" tabindex="0" aria-controls="members-group">Members</span>
+                            <ul id="members-group" class="nested" role="group">
+                                <li role="treeitem">Member list</li>
+                                <li role="treeitem">Edit member</li>
+                            </ul>                               
+                        </li>
+                        <li role="treeitem" aria-expanded="false">
+                            <span class="caret" role="button" tabindex="0" aria-controls="support-group">Support</span>
+                            <ul id="support-group" class="nested" role="group">
+                                <li role="treeitem">Ticket list</li>
+                                <li role="treeitem">Edit ticket</li>
+                            </ul>                               
+                        </li>                               
+                        <li role="treeitem">Settings</li>
+                    </ul>
                 </div>
-				<div class="container ms-1 mt-1 me-1 mb-1 col bordered">
-					<form action="https://students.open.ac.uk/mct/tm252/reflect/reflect.php" method="post">
-						<input type="hidden" name="itemID" value="10002000-3000-123456abcdef">
-						<div class="row mt-2 mb-2 middle-aligned">
-							<div class="col-2">
-								<label for="titleInput">Title:</label>
-							</div>
-							<div class="col-6">
-								<input type="text" class="form-control form-control-sm bordered" id="titleInput" name="title" value="News 1">
-							</div>
-							<div class="col-1">
-								<label for="typeSelect">Type:</label>							
-							</div>
-							<div class="col-2">							
-								<select class="form-select-sm bordered" id="typeSelect" name="type">
-								  <option value="0">&nbsp;</option>
-								  <option value="1" selected>News</option>
-								  <option value="2">Event</option>
-								  <option value="3">Announcement</option>
-								</select>												
-							</div>
-						</div>
-						<div class="row mt-2 mb-2 middle-aligned">
-							<div class="col-2">
-								<label for="subtitleInput">Subtitle:</label>
-							</div>
-							<div class="col-6">
-								<input type="text" class="form-control form-control-sm bordered" id="subtitleInput" name="subtitle" value="Always first">
-							</div>
-						</div>												
-						<div class="row">
-							<div class="col-8">
-								<div class="row">
-									<div class="row mt-2 mb-2 middle-aligned">
-										<div class="col-3">
-											<label for="imageInput">Image:</label>
-										</div>									
-										<div class="col-7 ms-1">
-											<input type="text" class="form-control form-control-sm bordered" id="imageInput" name="imagePath" value="Daily_news.png">
-										</div>
-										<div class="col text-end">
-											<button type="button" class="btn btn-sm btn-primary">Open</button>
-										</div>									
-									</div>
-								</div>
-								<div class="row">							
-									<div class="row mt-2 mb-2 middle-aligned">
-										<div class="col-3">
-											<label for="captionInput">Caption:</label>
-										</div>
-										<div class="col-7 ms-1">
-											<input type="text" class="form-control form-control-sm bordered" id="captionInput" name="caption" value="We bring you the news that matter">
-										</div>						
-									</div>								
-								</div>
-							</div>							
-							<div class="col-1 h-100">
-								<!-- Empty -->
-							</div>
-							<div class="col-2 h-100">
-								<img src="../images/daily_news.png" alt="IThumbnail of image to illustrate the news article" class="image-fluid w-100 bordered">
-							</div>					
-						</div>
-						<div class="row mt-2 mb-2 middle-aligned">
-							<div class="col-2">
-								<label for="textInput">Text:</label>
-							</div>
-							<div class="col-6">
-								<textarea class="form-control bordered" id="textInput" name="text" rows="6">We strive to bring you every bit of important news that are relevant to you, before everyone else.</textarea>								
-							</div>						
-						</div>
-						<div class="row mt-2 mb-2 middle-aligned">
-							<div class="col-2">
-								<label for="fromDateInput">Active from:</label>
-							</div>
-							<div class="col-2">
-								<input type="date" class="form-control bordered" id="fromDateInput" name="fromDate">
-							</div>
-							<div class="col-1">
-								<!-- Empty -->
-							</div>
-							<div class="col-1">
-								<label for="toDateInput">To:</label>
-							</div>
-							<div class="col-2">
-								<input type="date" class="form-control bordered" id="toDateInput" name="toDate">
-							</div>
-							<div class="col text-end">
-								<button type="submit" class="btn btn-sm btn-primary">Save changes</button>
-							</div>
-						</div>
-					</form>
-				</div>
+                <div class="container ms-1 mt-1 me-1 mb-1 col bordered">
+                    <form action="https://students.open.ac.uk/mct/tm252/reflect/reflect.php" method="post" aria-labelledby="edit-news-heading">
+                        <input type="hidden" name="itemID" value="10002000-3000-123456abcdef">
+                        <h2 id="edit-news-heading" class="visually-hidden">Edit news item</h2>
+
+                        <div class="row mt-2 mb-2 middle-aligned">
+                            <div class="col-2">
+                                <label for="titleInput">Title:</label>
+                            </div>
+                            <div class="col-6">
+                                <input type="text"
+                                       class="form-control form-control-sm bordered"
+                                       id="titleInput"
+                                       name="title"
+                                       value="News 1"
+                                       required>
+                            </div>
+                            <div class="col-1">
+                                <label for="typeSelect">Type:</label>                           
+                            </div>
+                            <div class="col-2">                         
+                                <select class="form-select-sm bordered"
+                                        id="typeSelect"
+                                        name="type"
+                                        required>
+                                  <option value="" disabled>&nbsp;</option>
+                                  <option value="1" selected>News</option>
+                                  <option value="2">Event</option>
+                                  <option value="3">Announcement</option>
+                                </select>                                               
+                            </div>
+                        </div>
+                        <div class="row mt-2 mb-2 middle-aligned">
+                            <div class="col-2">
+                                <label for="subtitleInput">Subtitle:</label>
+                            </div>
+                            <div class="col-6">
+                                <input type="text"
+                                       class="form-control form-control-sm bordered"
+                                       id="subtitleInput"
+                                       name="subtitle"
+                                       value="Always first">
+                            </div>
+                        </div>                                              
+                        <div class="row">
+                            <div class="col-8">
+                                <div class="row mt-2 mb-2 middle-aligned">
+                                    <div class="col-3">
+                                        <label for="imageInput">Image:</label>
+                                    </div>                                  
+                                    <div class="col-7 ms-1">
+                                        <input type="text"
+                                               class="form-control form-control-sm bordered"
+                                               id="imageInput"
+                                               name="imagePath"
+                                               value="Daily_news.png"
+                                               aria-describedby="imageInputDesc">
+                                        <div id="imageInputDesc" class="form-text">
+                                            Enter image filename or path.
+                                        </div>
+                                    </div>
+                                    <div class="col text-end">
+                                        <button type="button"
+                                                class="btn btn-sm btn-primary"
+                                                aria-label="Open image selector">
+                                            Open
+                                        </button>
+                                    </div>                                  
+                                </div>
+                                <div class="row mt-2 mb-2 middle-aligned">
+                                    <div class="col-3">
+                                        <label for="captionInput">Caption:</label>
+                                    </div>
+                                    <div class="col-7 ms-1">
+                                        <input type="text"
+                                               class="form-control form-control-sm bordered"
+                                               id="captionInput"
+                                               name="caption"
+                                               value="We bring you the news that matter">
+                                    </div>                      
+                                </div>                              
+                            </div>                          
+                            <div class="col-1 h-100">
+                                <!-- Empty -->
+                            </div>
+                            <div class="col-2 h-100">
+                                <img src="../images/daily_news.png"
+                                     alt="Thumbnail of image illustrating the news article"
+                                     class="img-fluid w-100 bordered">
+                            </div>                  
+                        </div>
+                        <div class="row mt-2 mb-2 middle-aligned">
+                            <div class="col-2">
+                                <label for="textInput">Text:</label>
+                            </div>
+                            <div class="col-6">
+                                <textarea class="form-control bordered"
+                                          id="textInput"
+                                          name="text"
+                                          rows="6"
+                                          required>
+We strive to bring you every bit of important news that are relevant to you, before everyone else.
+                                </textarea>                             
+                            </div>                      
+                        </div>
+                        <div class="row mt-2 mb-2 middle-aligned">
+                            <div class="col-2">
+                                <label for="fromDateInput">Active from:</label>
+                            </div>
+                            <div class="col-2">
+                                <input type="date"
+                                       class="form-control bordered"
+                                       id="fromDateInput"
+                                       name="fromDate"
+                                       aria-describedby="fromDateDesc">
+                                <div id="fromDateDesc" class="visually-hidden">Start date for news visibility</div>
+                            </div>
+                            <div class="col-1">
+                                <!-- Empty -->
+                            </div>
+                            <div class="col-1">
+                                <label for="toDateInput">To:</label>
+                            </div>
+                            <div class="col-2">
+                                <input type="date"
+                                       class="form-control bordered"
+                                       id="toDateInput"
+                                       name="toDate"
+                                       aria-describedby="toDateDesc">
+                                <div id="toDateDesc" class="visually-hidden">End date for news visibility</div>
+                            </div>
+                            <div class="col text-end">
+                                <button type="submit" class="btn btn-sm btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </main>
-        <footer>
+        <footer role="contentinfo">
             <!-- Row 5 -->
             <div class="row me-0">
                 <div class="col">
-                    <nav class="nav">
+                    <nav class="nav" aria-label="Footer navigation">
                         <!-- secondary navigation to go here -->
                         <a class="nav-link" href="./placeholder.html">Privacy</a>
                         <a class="nav-link" href="./placeholder.html">About Us</a>
@@ -229,14 +283,17 @@
             </div>
         </footer>
     </div>
-	<script>
-		document.querySelectorAll('.caret').forEach(function (caret) {
-			caret.addEventListener('click', function () {
-				this.parentElement.querySelector('.nested').classList.toggle('active');
-				this.classList.toggle('caret-down');
-			});
-		});		
-	</script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.querySelectorAll('.caret').forEach(function (caret) {
+            caret.addEventListener('click', function () {
+                var group = this.parentElement.querySelector('.nested');
+                var expanded = this.parentElement.getAttribute('aria-expanded') === 'true';
+                this.parentElement.setAttribute('aria-expanded', String(!expanded));
+                group.classList.toggle('active');
+                this.classList.toggle('caret-down');
+            });
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
