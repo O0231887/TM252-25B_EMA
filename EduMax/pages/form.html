@@ -32,7 +32,7 @@
             <!-- Row 2 -->
             <div class="row g-0 bg-dark">
 				<div class="col">
-				
+					<!-- Empty -->
 				</div>
                 <div class="col">
                     <nav class="navbar navbar-expand-lg p-2" data-bs-theme="dark">
@@ -76,14 +76,48 @@
 		<!-- page-specific content in sections -->
         <main>
             <!-- Row 4 -->
-            <div class="row">
-                <div class="container col">
-                    <section>
-						<h2>Placeholder page</h2>
-                        <p>This is a placeholder page for all content pages, used for testing your links.</p>
-                        <p>Click the back button in your browser to go back.</p>
-                    </section>
+            <div class="row mt-0 ms-0 g-0 bordered">
+                <div class="container ms-1 mt-1 me-1 mb-1 col-2 bordered">
+					<ul id="treeview" class="treeview">
+						<li>
+							<span>Administration</span>
+						</li>
+						<li>
+							<span class="caret">Modules</span>
+							<ul class="nested">
+								<li>Modules list</li>
+								<li>Create module</li>
+								<li>Edit module</li>
+							</ul>							
+						</li>
+						<li>
+							<span class="caret">Content</span>
+							<ul class="nested">
+								<li>Content list</li>
+								<li>Create content</li>
+								<li>Edit content</li>
+							</ul>								
+						</li>
+						<li>
+							<span class="caret">Members</span>
+							<ul class="nested">
+								<li>Member list</li>
+								<li>Edit member</li>
+							</ul>								
+						</li>
+						<li>
+							<span class="caret">Support</span>
+							<ul class="nested">
+								<li>Ticket list</li>
+								<li>Edit ticket</li>
+							</ul>								
+						</li>								
+						<li>Settings</li>
+					</ul>
                 </div>
+				<div class="container ms-1 mt-1 me-1 mb-1 col bordered">
+					Placeholder
+				</div>
             </div>
         </main>
         <footer>
@@ -104,6 +138,14 @@
             </div>
         </footer>
     </div>
+	<script lang="JavaScript">
+		document.querySelectorAll('.caret').forEach(function (caret) {
+			caret.addEventListener('click', function () {
+				this.parentElement.querySelector('.nested').classList.toggle('active');
+				this.classList.toggle('caret-down');
+			});
+		});		
+	</script>	
     <script src="../js/bootstrap.min.js"></script><!-- Bootstrap JavaScript -->
 </body>
 </html>

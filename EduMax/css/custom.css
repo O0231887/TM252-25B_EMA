@@ -27,3 +27,38 @@ form.register {
     width: 125px;
     height: 125px;
 }
+
+.bordered {
+	border: 2px solid black;
+}
+
+ul {
+	list-style-type: none;
+}
+
+#treeview {
+	margin: 0;
+	padding: 0;	
+}
+
+.caret {
+	cursor: pointer;
+	user-select: none;
+}
+
+.caret::before {
+	content: "\25B6"; /* Right arrow */
+	margin-right: 6px;
+}
+
+.caret-down::before {
+	content: "\25BC"; /* Down arrow */	
+}
+
+.nested {
+	display: none;
+}
+
+.active {
+	display: block;
+}
