@@ -32,6 +32,10 @@ form.register {
 	border: 2px solid black;
 }
 
+.middle-aligned {
+	align-items: center;
+}
+
 ul {
 	list-style-type: none;
 }
